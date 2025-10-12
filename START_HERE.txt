@@ -1,0 +1,105 @@
+======================================
+   QUESTION PAPER PORTAL
+   Quick Start Instructions
+======================================
+
+Welcome! Follow these steps to get started:
+
+STEP 1: FIREBASE SETUP
+-----------------------
+1. Go to: https://console.firebase.google.com/
+2. Create a new project
+3. Enable Firestore Database (production mode)
+4. Enable Storage (production mode)
+5. Enable Authentication (Email/Password)
+6. Create an admin user
+7. Get your Firebase config
+
+STEP 2: CONFIGURE APP
+---------------------
+1. Open: js/firebase-config.js
+2. Replace the placeholder values with your Firebase config
+3. Save the file
+
+STEP 3: RUN THE APP
+-------------------
+Choose one method:
+
+METHOD A - VS Code Live Server (Recommended)
+- Install "Live Server" extension
+- Right-click index.html
+- Select "Open with Live Server"
+
+METHOD B - Python
+- Open terminal in this folder
+- Run: python -m http.server 8000
+- Open: http://localhost:8000
+
+METHOD C - Node.js
+- Open terminal in this folder
+- Run: npx http-server
+- Follow the URL shown
+
+STEP 4: TEST
+------------
+1. Visit the homepage
+2. Login as admin (click "Admin")
+3. Upload a test paper
+4. Browse and download the paper
+
+NEED HELP?
+----------
+- Read QUICKSTART.md for detailed instructions
+- Read README.md for complete documentation
+- Check Firebase Console for errors
+- Press F12 in browser to see console errors
+
+IMPORTANT FILES:
+----------------
+- index.html          → Homepage
+- admin-login.html    → Admin login
+- admin.html          → Upload/manage papers
+- js/firebase-config.js → Firebase settings (EDIT THIS!)
+- README.md           → Full documentation
+- QUICKSTART.md       → Detailed setup guide
+
+DEFAULT STRUCTURE:
+------------------
+Boards Included:
+✓ CBSE
+✓ ICSE  
+✓ UP Board
+✓ Bihar Board
+
+Features:
+✓ Browse by board, year, subject
+✓ Search functionality
+✓ Admin dashboard
+✓ Upload PDFs (max 10MB)
+✓ Edit/Delete papers
+✓ Responsive design
+
+ADMIN CREDENTIALS:
+------------------
+You MUST create this user in Firebase Authentication:
+Email: rootphantom7@gmail.com
+Password: #BUGGATI41
+
+IMPORTANT: Create this admin user in Firebase Console:
+1. Go to Firebase Console → Authentication → Users
+2. Click "Add User"
+3. Email: rootphantom7@gmail.com
+4. Password: #BUGGATI41
+5. Click "Add User"
+
+SUPPORT:
+--------
+For issues, check:
+1. Browser console (F12)
+2. Firebase Console logs
+3. README.md troubleshooting section
+
+Happy uploading! 🎓📚
+
+======================================
+

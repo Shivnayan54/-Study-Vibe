@@ -1,0 +1,286 @@
+================================================================
+    SETUP CHECKLIST - Question Paper Portal
+================================================================
+
+Follow this checklist to get your portal running in 10 minutes!
+
+================================================================
+☐ STEP 1: CREATE FIREBASE PROJECT (2 minutes)
+================================================================
+
+1. ☐ Go to https://console.firebase.google.com/
+2. ☐ Click "Add Project"
+3. ☐ Name: "question-paper-portal" (or your choice)
+4. ☐ Click "Create Project"
+5. ☐ Wait for project creation
+
+================================================================
+☐ STEP 2: ENABLE FIRESTORE DATABASE (1 minute)
+================================================================
+
+1. ☐ In Firebase Console, click "Firestore Database"
+2. ☐ Click "Create Database"
+3. ☐ Select "Start in production mode"
+4. ☐ Choose location (asia-south1 for India)
+5. ☐ Click "Enable"
+6. ☐ Go to "Rules" tab
+7. ☐ Paste this rule:
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /papers/{paperId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
+
+8. ☐ Click "Publish"
+
+================================================================
+☐ STEP 3: ENABLE STORAGE (1 minute)
+================================================================
+
+1. ☐ Click "Storage" in sidebar
+2. ☐ Click "Get Started"
+3. ☐ Use production mode
+4. ☐ Click "Done"
+5. ☐ Go to "Rules" tab
+6. ☐ Paste this rule:
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /papers/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
+
+7. ☐ Click "Publish"
+
+================================================================
+☐ STEP 4: ENABLE AUTHENTICATION (1 minute)
+================================================================
+
+1. ☐ Click "Authentication" in sidebar
+2. ☐ Click "Get Started"
+3. ☐ Click "Email/Password"
+4. ☐ Toggle "Enable"
+5. ☐ Click "Save"
+
+================================================================
+☐ STEP 5: CREATE ADMIN USER (1 minute)
+================================================================
+
+⚠️ IMPORTANT: Use these exact credentials!
+
+1. ☐ In Authentication, go to "Users" tab
+2. ☐ Click "Add User"
+3. ☐ Enter:
+   
+   Email:    rootphantom7@gmail.com
+   Password: #BUGGATI41
+
+4. ☐ Click "Add User"
+5. ☐ Verify user appears in list
+
+✅ Your admin credentials:
+   Email:    rootphantom7@gmail.com
+   Password: #BUGGATI41
+
+================================================================
+☐ STEP 6: GET FIREBASE CONFIG (2 minutes)
+================================================================
+
+1. ☐ Click gear icon (⚙️) → Project Settings
+2. ☐ Scroll to "Your apps"
+3. ☐ Click Web icon (</>)
+4. ☐ App nickname: "Question Paper Portal"
+5. ☐ Don't check Firebase Hosting
+6. ☐ Click "Register App"
+7. ☐ Copy the firebaseConfig object
+
+It looks like this:
+const firebaseConfig = {
+  apiKey: "AIza...",
+  authDomain: "your-app.firebaseapp.com",
+  projectId: "your-project-id",
+  storageBucket: "your-app.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abc123"
+};
+
+8. ☐ Copy this entire object (you'll need it next)
+
+================================================================
+☐ STEP 7: CONFIGURE APPLICATION (2 minutes)
+================================================================
+
+1. ☐ Open file: C:\IMPORTANT\Desktop\board\js\firebase-config.js
+
+2. ☐ Replace the placeholder values with YOUR Firebase config:
+
+BEFORE:
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    ...
+};
+
+AFTER:
+const firebaseConfig = {
+    apiKey: "AIza...",              // YOUR actual values
+    authDomain: "your-app.firebaseapp.com",
+    projectId: "your-project-id",
+    storageBucket: "your-app.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "1:123456789:web:abc123"
+};
+
+3. ☐ Save the file
+
+================================================================
+☐ STEP 8: RUN LOCALLY (1 minute)
+================================================================
+
+OPTION A - Using Python:
+
+1. ☐ Open Command Prompt / Terminal
+2. ☐ Navigate: cd C:\IMPORTANT\Desktop\board
+3. ☐ Run: python -m http.server 8000
+4. ☐ Open browser: http://localhost:8000
+
+OPTION B - Using VS Code Live Server:
+
+1. ☐ Open board folder in VS Code
+2. ☐ Install "Live Server" extension
+3. ☐ Right-click index.html
+4. ☐ Select "Open with Live Server"
+
+OPTION C - Using Node.js:
+
+1. ☐ Open Command Prompt / Terminal
+2. ☐ Navigate: cd C:\IMPORTANT\Desktop\board
+3. ☐ Run: npx http-server
+4. ☐ Open URL shown
+
+================================================================
+☐ STEP 9: TEST ADMIN LOGIN (2 minutes)
+================================================================
+
+1. ☐ In your browser, click "Admin" in navigation
+2. ☐ Enter credentials:
+   
+   Email:    rootphantom7@gmail.com
+   Password: #BUGGATI41
+
+3. ☐ Click "Login"
+4. ☐ Verify you're redirected to Admin Dashboard
+5. ☐ See the statistics and upload form
+
+================================================================
+☐ STEP 10: UPLOAD TEST PAPER (2 minutes)
+================================================================
+
+1. ☐ In Admin Dashboard, fill the form:
+   - Board: Select any (e.g., CBSE)
+   - Year: Select any (e.g., 2024)
+   - Subject: Type "Mathematics"
+   - Title: Type "CBSE Mathematics 2024"
+   - File: Choose a PDF file (max 10MB)
+
+2. ☐ Click "Upload Paper"
+3. ☐ Wait for upload to complete
+4. ☐ See "Paper uploaded successfully!" message
+
+================================================================
+☐ STEP 11: TEST STUDENT VIEW (2 minutes)
+================================================================
+
+1. ☐ Click "Browse Papers" in navigation
+2. ☐ See your uploaded paper
+3. ☐ Try filtering by board
+4. ☐ Click "Download" button
+5. ☐ Verify PDF downloads
+
+6. ☐ Go to "Search" page
+7. ☐ Search for your paper
+8. ☐ Verify it appears in results
+
+9. ☐ Test on mobile:
+   - ☐ Open on phone/tablet
+   - ☐ Check responsiveness
+   - ☐ Test download
+
+================================================================
+✅ SETUP COMPLETE!
+================================================================
+
+If all checkboxes are checked, your portal is ready!
+
+================================================================
+🎉 YOU'RE READY TO GO LIVE!
+================================================================
+
+Next steps:
+1. ☐ Upload more papers
+2. ☐ Test with real users
+3. ☐ Deploy to production (see DEPLOYMENT.md)
+4. ☐ Share with students!
+
+================================================================
+IMPORTANT FILES TO REMEMBER
+================================================================
+
+Admin Credentials:
+→ ADMIN_CREDENTIALS.txt
+
+Configuration:
+→ js/firebase-config.js (YOU EDITED THIS)
+
+Firebase Console:
+→ https://console.firebase.google.com/
+
+Admin Login URL:
+→ http://localhost:8000/admin-login.html
+
+================================================================
+ADMIN LOGIN CREDENTIALS (SAVE THIS!)
+================================================================
+
+Email:    rootphantom7@gmail.com
+Password: #BUGGATI41
+
+⚠️ Keep these credentials secure!
+
+================================================================
+TROUBLESHOOTING
+================================================================
+
+Issue: Can't login
+→ Check if user created in Firebase Console
+→ Verify email/password exactly as shown
+
+Issue: Upload fails
+→ Check file size (must be < 10MB)
+→ Verify file is PDF format
+
+Issue: Papers not showing
+→ Wait a few seconds for Firebase sync
+→ Refresh the page
+
+Issue: Firebase error
+→ Check js/firebase-config.js is configured
+→ Verify Firebase rules are set correctly
+
+For more help, read README.md
+
+================================================================
+
+All done? Share your portal with students! 🎓📚
+
+================================================================
+

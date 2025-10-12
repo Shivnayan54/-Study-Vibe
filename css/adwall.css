@@ -1,0 +1,330 @@
+/* Ad Wall Modal Styles */
+
+.ad-wall-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.ad-wall-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ad-wall-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.ad-wall-modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Dark mode support */
+body.dark-mode .ad-wall-modal {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* Ad Wall Header */
+.ad-wall-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+body.dark-mode .ad-wall-header {
+    border-bottom-color: #333;
+}
+
+.ad-wall-header h2 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+body.dark-mode .ad-wall-header h2 {
+    color: #e0e0e0;
+}
+
+.ad-wall-header p {
+    color: #666;
+    margin: 0;
+    font-size: 14px;
+}
+
+body.dark-mode .ad-wall-header p {
+    color: #aaa;
+}
+
+/* Countdown Timer */
+.ad-countdown-section {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: white;
+}
+
+.ad-countdown-timer {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ad-wait-message,
+.ad-ready-message {
+    font-size: 16px;
+    margin: 10px 0 0 0;
+}
+
+.ad-ready-message {
+    display: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Ad Container */
+.ad-container {
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px dashed #ddd;
+}
+
+body.dark-mode .ad-container {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+/* Demo Ad Styles */
+.demo-ad {
+    width: 100%;
+    text-align: center;
+}
+
+.demo-ad-content h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 20px;
+}
+
+body.dark-mode .demo-ad-content h3 {
+    color: #e0e0e0;
+}
+
+.demo-ad-content p {
+    margin: 5px 0;
+    color: #666;
+}
+
+body.dark-mode .demo-ad-content p {
+    color: #aaa;
+}
+
+.demo-ad-small {
+    font-size: 12px;
+    color: #999;
+}
+
+.demo-ad-placeholder {
+    margin: 20px 0;
+}
+
+.demo-ad-box {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.demo-ad-info {
+    font-style: italic;
+    color: #888;
+    font-size: 13px;
+}
+
+/* Ad Action Buttons */
+.ad-wall-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.ad-action-btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ad-download-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    flex: 1;
+}
+
+.ad-download-btn:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.ad-download-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ad-download-btn.ready {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(56, 239, 125, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(56, 239, 125, 0.6);
+    }
+}
+
+.ad-cancel-btn {
+    background: #f5f5f5;
+    color: #666;
+}
+
+body.dark-mode .ad-cancel-btn {
+    background: #333;
+    color: #aaa;
+}
+
+.ad-cancel-btn:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+body.dark-mode .ad-cancel-btn:hover {
+    background: #444;
+}
+
+/* Info Box */
+.ad-info-box {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #1976d2;
+}
+
+body.dark-mode .ad-info-box {
+    background: #1a2332;
+    border-left-color: #42a5f5;
+    color: #64b5f6;
+}
+
+.ad-info-box p {
+    margin: 5px 0;
+}
+
+.ad-info-box strong {
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ad-wall-modal {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .ad-wall-header h2 {
+        font-size: 20px;
+    }
+
+    .ad-countdown-timer {
+        font-size: 36px;
+    }
+
+    .ad-wall-actions {
+        flex-direction: column;
+    }
+
+    .ad-action-btn {
+        width: 100%;
+    }
+
+    .ad-container {
+        min-height: 250px;
+        padding: 15px;
+    }
+}
+
+/* Loading Animation */
+@keyframes adLoading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ad-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: adLoading 1s linear infinite;
+    margin: 20px auto;
+}
+

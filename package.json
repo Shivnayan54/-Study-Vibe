@@ -1,0 +1,27 @@
+{
+  "name": "question-paper-portal",
+  "version": "1.0.0",
+  "description": "A student-friendly web application for browsing and downloading previous year question papers",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "education",
+    "question-papers",
+    "cbse",
+    "icse",
+    "students",
+    "exam-papers"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
+

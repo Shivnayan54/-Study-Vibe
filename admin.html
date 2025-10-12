@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - StudyVibe</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="16" fill="url(#logoGradient)"/>
+                            <rect x="8" y="6" width="16" height="20" rx="2" fill="white" opacity="0.95"/>
+                            <line x1="11" y1="10" x2="21" y2="10" stroke="#4f46e5" stroke-width="1"/>
+                            <line x1="11" y1="12" x2="19" y2="12" stroke="#4f46e5" stroke-width="1"/>
+                            <line x1="11" y1="14" x2="21" y2="14" stroke="#4f46e5" stroke-width="1"/>
+                            <line x1="11" y1="16" x2="18" y2="16" stroke="#4f46e5" stroke-width="1"/>
+                            <line x1="11" y1="18" x2="20" y2="18" stroke="#4f46e5" stroke-width="1"/>
+                            <circle cx="20" cy="22" r="3" fill="#10b981"/>
+                            <text x="20" y="24" font-family="Arial, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="white">?</text>
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-study">Study</span><span class="logo-vibe">Vibe</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="browse.html">Browse Papers</a></li>
+                <li><a href="pyqs.html">PYQS</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="admin.html" class="admin-link active">Dashboard</a></li>
+                <li><a href="#" id="logoutBtn" class="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content admin-page">
+        <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <p>Manage question papers and view statistics</p>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📄</div>
+                <div class="stat-info">
+                    <span class="stat-number" id="totalPapersAdmin">0</span>
+                    <span class="stat-label">Total Papers</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-info">
+                    <span class="stat-number" id="totalBoards">4</span>
+                    <span class="stat-label">Active Boards</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📤</div>
+                <div class="stat-info">
+                    <span class="stat-number" id="recentUploads">0</span>
+                    <span class="stat-label">This Month</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="showTab('upload')">Upload Papers</button>
+                <button class="tab-btn" onclick="showTab('manage')">Manage Papers</button>
+                <button class="tab-btn" onclick="showTab('pyqsUpload')">Upload PYQS</button>
+                <button class="tab-btn" onclick="showTab('pyqsManage')">Manage PYQS</button>
+            </div>
+
+            <!-- Upload Tab -->
+            <div id="uploadTab" class="tab-content active">
+                <div class="upload-section">
+                    <h2>Upload New Question Paper</h2>
+                    <form id="uploadForm" class="upload-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="board">Board *</label>
+                                <select id="board" class="form-input" required>
+                                    <option value="">Select Board</option>
+                                    <option value="CBSE">CBSE</option>
+                                    <option value="ICSE">ICSE</option>
+                                    <option value="UP Board">UP Board</option>
+                                    <option value="Bihar Board">Bihar Board</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="class">Class *</label>
+                                <select id="class" class="form-input" required>
+                                    <option value="">Select Class</option>
+                                    <option value="9">Class 9</option>
+                                    <option value="10">Class 10</option>
+                                    <option value="11">Class 11</option>
+                                    <option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="year">Year *</label>
+                                <select id="year" class="form-input" required>
+                                    <option value="">Select Year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input 
+                                    type="text" 
+                                    id="subject" 
+                                    class="form-input" 
+                                    placeholder="e.g., Mathematics, Physics"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Paper Title *</label>
+                            <input 
+                                type="text" 
+                                id="title" 
+                                class="form-input" 
+                                placeholder="e.g., Class 10 Mathematics - 2024 Annual Exam"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload Method *</label>
+                            <div class="upload-method-toggle">
+                                <label class="radio-option">
+                                    <input type="radio" name="uploadMethod" value="file" checked onchange="toggleUploadMethod(this.value)">
+                                    <span>Upload File</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="uploadMethod" value="gdrive" onchange="toggleUploadMethod(this.value)">
+                                    <span>Google Drive Link</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="fileUploadSection">
+                            <label for="pdfFile">PDF File *</label>
+                            <input 
+                                type="file" 
+                                id="pdfFile" 
+                                class="form-input file-input" 
+                                accept=".pdf"
+                            >
+                            <small class="form-help">Maximum file size: 10MB</small>
+                        </div>
+
+                        <div class="form-group" id="gdriveLinkSection" style="display: none;">
+                            <label for="gdriveLink">Google Drive Link *</label>
+                            <input 
+                                type="url" 
+                                id="gdriveLink" 
+                                class="form-input" 
+                                placeholder="https://drive.google.com/file/d/..."
+                            >
+                            <small class="form-help">Paste the shareable Google Drive link (Make sure link sharing is enabled)</small>
+                        </div>
+
+                        <div id="uploadProgress" class="upload-progress" style="display: none;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">0%</span>
+                        </div>
+
+                        <div id="uploadMessage" class="message" style="display: none;"></div>
+
+                        <button type="submit" class="btn-primary" id="uploadBtn">
+                            Upload Paper
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Manage Tab -->
+            <div id="manageTab" class="tab-content">
+                <div class="manage-section">
+                    <div class="manage-header">
+                        <h2>Manage Existing Papers</h2>
+                        <div class="manage-filters">
+                            <input 
+                                type="text" 
+                                id="manageSearch" 
+                                class="search-input-small" 
+                                placeholder="Search papers..."
+                            >
+                            <select id="manageBoardFilter" class="filter-select-small">
+                                <option value="">All Boards</option>
+                                <option value="CBSE">CBSE</option>
+                                <option value="ICSE">ICSE</option>
+                                <option value="UP Board">UP Board</option>
+                                <option value="Bihar Board">Bihar Board</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="managePapersGrid" class="manage-grid">
+                        <!-- Papers will be loaded here -->
+                    </div>
+
+                    <div id="noManagePapers" class="no-results" style="display: none;">
+                        <div class="no-results-icon">📭</div>
+                        <h3>No Papers Found</h3>
+                        <p>Upload some papers to get started</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PYQS Upload Tab -->
+            <div id="pyqsUploadTab" class="tab-content">
+                <div class="upload-section">
+                    <h2>Upload PYQS (Previous Year Question Papers)</h2>
+                    <form id="pyqsUploadForm" class="upload-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pyqsBoard">Board *</label>
+                                <select id="pyqsBoard" class="form-input" required>
+                                    <option value="">Select Board</option>
+                                    <option value="CBSE">CBSE</option>
+                                    <option value="ICSE">ICSE</option>
+                                    <option value="UP Board">UP Board</option>
+                                    <option value="Bihar Board">Bihar Board</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pyqsClass">Class *</label>
+                                <select id="pyqsClass" class="form-input" required>
+                                    <option value="">Select Class</option>
+                                    <option value="9">Class 9</option>
+                                    <option value="10">Class 10</option>
+                                    <option value="11">Class 11</option>
+                                    <option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pyqsYear">Year *</label>
+                                <select id="pyqsYear" class="form-input" required>
+                                    <option value="">Select Year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pyqsSubject">Subject *</label>
+                                <input 
+                                    type="text" 
+                                    id="pyqsSubject" 
+                                    class="form-input" 
+                                    placeholder="e.g., Mathematics, Physics"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pyqsTitle">Paper Title *</label>
+                            <input 
+                                type="text" 
+                                id="pyqsTitle" 
+                                class="form-input" 
+                                placeholder="e.g., CBSE Class 10 Mathematics - 2023 PYQS"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload Method *</label>
+                            <div class="upload-method-toggle">
+                                <label class="radio-option">
+                                    <input type="radio" name="pyqsUploadMethod" value="file" checked onchange="togglePyqsUploadMethod(this.value)">
+                                    <span>Upload File</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="pyqsUploadMethod" value="gdrive" onchange="togglePyqsUploadMethod(this.value)">
+                                    <span>Google Drive Link</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="pyqsFileUploadSection">
+                            <label for="pyqsPdfFile">PDF File *</label>
+                            <input 
+                                type="file" 
+                                id="pyqsPdfFile" 
+                                class="form-input file-input" 
+                                accept=".pdf"
+                            >
+                            <small class="form-help">Maximum file size: 10MB</small>
+                        </div>
+
+                        <div class="form-group" id="pyqsGdriveLinkSection" style="display: none;">
+                            <label for="pyqsGdriveLink">Google Drive Link *</label>
+                            <input 
+                                type="url" 
+                                id="pyqsGdriveLink" 
+                                class="form-input" 
+                                placeholder="https://drive.google.com/file/d/..."
+                            >
+                            <small class="form-help">Paste the shareable Google Drive link (Make sure link sharing is enabled)</small>
+                        </div>
+
+                        <div id="pyqsUploadProgress" class="upload-progress" style="display: none;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="pyqsProgressFill"></div>
+                            </div>
+                            <span class="progress-text" id="pyqsProgressText">0%</span>
+                        </div>
+
+                        <div id="pyqsUploadMessage" class="message" style="display: none;"></div>
+
+                        <button type="submit" class="btn-primary" id="pyqsUploadBtn">
+                            Upload PYQS
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- PYQS Manage Tab -->
+            <div id="pyqsManageTab" class="tab-content">
+                <div class="manage-section">
+                    <div class="manage-header">
+                        <h2>Manage PYQS</h2>
+                        <div class="manage-filters">
+                            <input 
+                                type="text" 
+                                id="pyqsManageSearch" 
+                                class="search-input-small" 
+                                placeholder="Search PYQS..."
+                            >
+                            <select id="pyqsManageBoardFilter" class="filter-select-small">
+                                <option value="">All Boards</option>
+                                <option value="CBSE">CBSE</option>
+                                <option value="ICSE">ICSE</option>
+                                <option value="UP Board">UP Board</option>
+                                <option value="Bihar Board">Bihar Board</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="pyqsManageGrid" class="manage-grid">
+                        <!-- PYQS will be loaded here -->
+                    </div>
+
+                    <div id="noPyqsManage" class="no-results" style="display: none;">
+                        <div class="no-results-icon">📭</div>
+                        <h3>No PYQS Found</h3>
+                        <p>Upload some PYQS to get started</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Paper Details</h2>
+                <button class="modal-close" onclick="closeEditModal()">&times;</button>
+            </div>
+            <form id="editForm" class="modal-form">
+                <input type="hidden" id="editPaperId">
+                
+                <div class="form-group">
+                    <label for="editBoard">Board</label>
+                    <select id="editBoard" class="form-input" required>
+                        <option value="CBSE">CBSE</option>
+                        <option value="ICSE">ICSE</option>
+                        <option value="UP Board">UP Board</option>
+                        <option value="Bihar Board">Bihar Board</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editClass">Class</label>
+                    <select id="editClass" class="form-input" required>
+                        <option value="9">Class 9</option>
+                        <option value="10">Class 10</option>
+                        <option value="11">Class 11</option>
+                        <option value="12">Class 12</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editYear">Year</label>
+                    <input type="text" id="editYear" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editSubject">Subject</label>
+                    <input type="text" id="editSubject" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editTitle">Title</label>
+                    <input type="text" id="editTitle" class="form-input" required>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Question Paper Portal. All rights reserved.</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- App Script -->
+    <script src="js/admin.js"></script>
+</body>
+</html>
+
