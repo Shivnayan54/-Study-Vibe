@@ -44,8 +44,44 @@ function goToBrowse(board) {
     window.location.href = `browse.html?board=${encodeURIComponent(board)}`;
 }
 
+// Track visitor
+async function trackVisitor() {
+    try {
+        const db = window.firebaseDB;
+        if (!db) {
+            console.log('Firebase DB not available');
+            return;
+        }
+        
+        const analyticsRef = db.collection('analytics').doc('visitors');
+        
+        // Check if document exists, if not create it
+        const doc = await analyticsRef.get();
+        if (!doc.exists) {
+            console.log('Initializing visitor tracking...');
+            await analyticsRef.set({
+                totalVisits: 1,
+                lastUpdated: window.firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } else {
+            // Increment total visits
+            await analyticsRef.update({
+                totalVisits: window.firebase.firestore.FieldValue.increment(1),
+                lastUpdated: window.firebase.firestore.FieldValue.serverTimestamp()
+            });
+        }
+        
+        console.log('✅ Visitor tracked successfully');
+    } catch (error) {
+        console.error('❌ Error tracking visitor:', error);
+    }
+}
+
 // Initialize page
 document.addEventListener('DOMContentLoaded', () => {
+    // Track visitor on page load
+    trackVisitor();
+    
     // Add animation to hero section
     const hero = document.querySelector('.hero');
     if (hero) {

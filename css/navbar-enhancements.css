@@ -1,0 +1,396 @@
+/* Enhanced Navbar Styles */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08) !important;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(102, 126, 234, 0.05) 0%, 
+        rgba(118, 75, 162, 0.05) 50%, 
+        rgba(102, 126, 234, 0.05) 100%);
+    background-size: 200% 100%;
+    animation: navbarShimmer 5s ease infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.navbar:hover::before {
+    opacity: 1;
+}
+
+@keyframes navbarShimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Dark Mode Navbar */
+body.dark-mode .navbar {
+    background: rgba(30, 30, 30, 0.95) !important;
+    border-bottom-color: rgba(251, 146, 60, 0.2) !important;
+}
+
+/* Nav Container */
+.nav-container {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 1.25rem 3rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: relative !important;
+}
+
+/* Enhanced Logo */
+.logo-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    padding: 0.5rem !important;
+    border-radius: var(--radius-lg) !important;
+}
+
+.logo-container:hover {
+    transform: scale(1.05) !important;
+    background: rgba(99, 102, 241, 0.05) !important;
+}
+
+.logo-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+.logo-icon svg {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3)) !important;
+}
+
+.logo-container:hover .logo-icon svg {
+    transform: rotate(-5deg) scale(1.1) !important;
+    filter: drop-shadow(0 8px 20px rgba(102, 126, 234, 0.5)) !important;
+}
+
+/* Enhanced Logo Text */
+.logo-text {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+}
+
+.logo-study {
+    font-size: 1.75rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #1e293b 0%, #475569 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    letter-spacing: -0.5px !important;
+    transition: all 0.3s ease !important;
+}
+
+.logo-vibe {
+    font-size: 1.75rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #10b981 100%) !important;
+    background-size: 200% 100% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    letter-spacing: -0.5px !important;
+    position: relative !important;
+    animation: logoGradient 3s ease infinite !important;
+}
+
+@keyframes logoGradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.logo-container:hover .logo-vibe {
+    animation: logoGradient 1s ease infinite, logoPulse 0.6s ease !important;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8));
+    }
+}
+
+/* Dark Mode Logo */
+body.dark-mode .logo-study {
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Enhanced Nav Links */
+.nav-links {
+    display: flex !important;
+    list-style: none !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nav-links li {
+    position: relative !important;
+}
+
+.nav-links a {
+    text-decoration: none !important;
+    color: var(--text-secondary) !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    padding: 0.875rem 1.5rem !important;
+    border-radius: var(--radius-lg) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: block !important;
+}
+
+/* Hover Background Effect */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: -1;
+}
+
+.nav-links a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Bottom Border Effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #10b981);
+    background-size: 200% 100%;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+    animation: gradientShift 2s ease infinite;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Special Styling for Admin Link */
+.admin-link {
+    background: linear-gradient(135deg, rgba(251, 146, 60, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%) !important;
+    border: 2px solid rgba(251, 146, 60, 0.3) !important;
+    color: var(--accent-color) !important;
+}
+
+.admin-link:hover {
+    background: linear-gradient(135deg, rgba(251, 146, 60, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%) !important;
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 8px 20px rgba(251, 146, 60, 0.3) !important;
+}
+
+.admin-link::after {
+    background: linear-gradient(90deg, #fb923c, #f97316) !important;
+}
+
+/* Special Styling for Logout Button */
+.logout-btn {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%) !important;
+    border: 2px solid rgba(239, 68, 68, 0.3) !important;
+    color: var(--danger-color) !important;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%) !important;
+    border-color: var(--danger-color) !important;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3) !important;
+}
+
+.logout-btn::after {
+    background: linear-gradient(90deg, #ef4444, #dc2626) !important;
+}
+
+/* Active Link Special Effect */
+.nav-links a.active {
+    background: rgba(102, 126, 234, 0.1) !important;
+    color: var(--primary-color) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Navbar Scroll Effect */
+.navbar.scrolled {
+    padding: 0.5rem 0 !important;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+}
+
+body.dark-mode .navbar.scrolled {
+    background: rgba(20, 20, 20, 0.98) !important;
+}
+
+/* Mobile Menu Button (if needed) */
+.mobile-menu-btn {
+    display: none !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: var(--radius-lg) !important;
+    color: white !important;
+    font-size: 1.5rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+.mobile-menu-btn:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .nav-container {
+        padding: 1rem 2rem !important;
+    }
+    
+    .nav-links {
+        gap: 0.25rem !important;
+    }
+    
+    .nav-links a {
+        padding: 0.75rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block !important;
+    }
+    
+    .nav-links {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: var(--bg-primary) !important;
+        flex-direction: column !important;
+        padding: 1rem !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+        border-radius: 0 0 var(--radius-xl) var(--radius-xl) !important;
+        transform: translateY(-100%) !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .nav-links li {
+        width: 100% !important;
+    }
+    
+    .nav-links a {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* Notification Badge (for future use) */
+.nav-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: badgePulse 2s ease infinite;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.6);
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Remove vibe emoji after effect if not needed */
+.logo-vibe::after {
+    display: none !important;
+}
+

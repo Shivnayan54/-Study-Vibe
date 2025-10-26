@@ -89,6 +89,11 @@ function checkAuth() {
     auth.onAuthStateChanged((user) => {
         if (user) {
             currentUser = user;
+            // Display user email
+            const userEmailElement = document.getElementById('userEmail');
+            if (userEmailElement) {
+                userEmailElement.textContent = user.email;
+            }
             loadAdminData();
         } else {
             // Not logged in, redirect to login page
@@ -128,8 +133,38 @@ async function loadStatistics() {
         });
         
         document.getElementById('recentUploads').textContent = recentPapers.length;
+        
+        // Load visitor count
+        await loadVisitorCount();
     } catch (error) {
         console.error('Error loading statistics:', error);
+    }
+}
+
+// Load visitor count
+async function loadVisitorCount() {
+    try {
+        const db = window.firebaseDB;
+        const analyticsRef = db.collection('analytics').doc('visitors');
+        const doc = await analyticsRef.get();
+        
+        if (doc.exists) {
+            const data = doc.data();
+            const totalVisitors = data.totalVisits || 0;
+            console.log('Visitor count loaded:', totalVisitors);
+            document.getElementById('totalVisitors').textContent = totalVisitors.toLocaleString();
+        } else {
+            // Document doesn't exist yet, create it with 0 visits
+            console.log('Creating new visitor analytics document');
+            await analyticsRef.set({
+                totalVisits: 0,
+                lastUpdated: window.firebase.firestore.FieldValue.serverTimestamp()
+            });
+            document.getElementById('totalVisitors').textContent = '0';
+        }
+    } catch (error) {
+        console.error('Error loading visitor count:', error);
+        document.getElementById('totalVisitors').textContent = 'Error';
     }
 }
 

@@ -2,6 +2,33 @@
 
 let allPapers = [];
 
+// Track visitor
+async function trackVisitor() {
+    try {
+        const db = window.firebaseDB;
+        if (!db) return;
+        
+        const analyticsRef = db.collection('analytics').doc('visitors');
+        
+        // Check if document exists, if not create it
+        const doc = await analyticsRef.get();
+        if (!doc.exists) {
+            await analyticsRef.set({
+                totalVisits: 1,
+                lastUpdated: window.firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } else {
+            await analyticsRef.update({
+                totalVisits: window.firebase.firestore.FieldValue.increment(1),
+                lastUpdated: window.firebase.firestore.FieldValue.serverTimestamp()
+            });
+        }
+        console.log('✅ Visitor tracked - Search page');
+    } catch (error) {
+        console.error('❌ Error tracking visitor:', error);
+    }
+}
+
 // Load all papers
 async function loadAllPapers() {
     try {
@@ -137,18 +164,9 @@ function viewPaper(url) {
     window.open(url, '_blank');
 }
 
-// Download paper with ad wall
+// Download paper directly
 function downloadPaper(url, title) {
-    // Show ad wall before download
-    if (window.adWall) {
-        window.adWall.showAdWall(() => {
-            // This callback will be executed after ad is viewed
-            executeDownload(url, title);
-        });
-    } else {
-        // Fallback if ad wall is not loaded
-        executeDownload(url, title);
-    }
+    executeDownload(url, title);
 }
 
 // Execute actual download
@@ -193,6 +211,9 @@ function showLoading(show) {
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', () => {
+    // Track visitor on page load
+    trackVisitor();
+    
     const searchInput = document.getElementById('searchInput');
     
     // Load papers

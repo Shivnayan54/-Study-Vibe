@@ -3,6 +3,33 @@
 let allPapers = [];
 let filteredPapers = [];
 
+// Track visitor
+async function trackVisitor() {
+    try {
+        const db = window.firebaseDB;
+        if (!db) return;
+        
+        const analyticsRef = db.collection('analytics').doc('visitors');
+        
+        // Check if document exists, if not create it
+        const doc = await analyticsRef.get();
+        if (!doc.exists) {
+            await analyticsRef.set({
+                totalVisits: 1,
+                lastUpdated: window.firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } else {
+            await analyticsRef.update({
+                totalVisits: window.firebase.firestore.FieldValue.increment(1),
+                lastUpdated: window.firebase.firestore.FieldValue.serverTimestamp()
+            });
+        }
+        console.log('✅ Visitor tracked - Browse page');
+    } catch (error) {
+        console.error('❌ Error tracking visitor:', error);
+    }
+}
+
 // Load all papers from Firestore
 async function loadPapers() {
     showLoading(true);
@@ -36,14 +63,45 @@ async function loadPapers() {
     }
 }
 
-// Populate year and subject filter options
+// Populate all filter options dynamically based on uploaded files
 function populateFilterOptions() {
-    // Get unique years and subjects
-    const years = [...new Set(allPapers.map(p => p.year))].sort((a, b) => b - a);
-    const subjects = [...new Set(allPapers.map(p => p.subject))].sort();
+    // Get unique values for all filters
+    const boards = [...new Set(allPapers.map(p => p.board))].filter(Boolean).sort();
+    const classes = [...new Set(allPapers.map(p => p.class))].filter(Boolean).sort((a, b) => {
+        // Sort numerically if both are numbers
+        const numA = parseInt(a);
+        const numB = parseInt(b);
+        if (!isNaN(numA) && !isNaN(numB)) {
+            return numA - numB;
+        }
+        return a.toString().localeCompare(b.toString());
+    });
+    const years = [...new Set(allPapers.map(p => p.year))].filter(Boolean).sort((a, b) => b - a);
+    const subjects = [...new Set(allPapers.map(p => p.subject))].filter(Boolean).sort();
+    
+    // Populate board filter
+    const boardFilter = document.getElementById('boardFilter');
+    boardFilter.innerHTML = '<option value="">All Boards</option>';
+    boards.forEach(board => {
+        const option = document.createElement('option');
+        option.value = board;
+        option.textContent = board;
+        boardFilter.appendChild(option);
+    });
+    
+    // Populate class filter
+    const classFilter = document.getElementById('classFilter');
+    classFilter.innerHTML = '<option value="">All Classes</option>';
+    classes.forEach(cls => {
+        const option = document.createElement('option');
+        option.value = cls;
+        option.textContent = `Class ${cls}`;
+        classFilter.appendChild(option);
+    });
     
     // Populate year filter
     const yearFilter = document.getElementById('yearFilter');
+    yearFilter.innerHTML = '<option value="">All Years</option>';
     years.forEach(year => {
         const option = document.createElement('option');
         option.value = year;
@@ -53,6 +111,7 @@ function populateFilterOptions() {
     
     // Populate subject filter
     const subjectFilter = document.getElementById('subjectFilter');
+    subjectFilter.innerHTML = '<option value="">All Subjects</option>';
     subjects.forEach(subject => {
         const option = document.createElement('option');
         option.value = subject;
@@ -218,22 +277,8 @@ function closePDFModal() {
 // Make function global
 window.closePDFModal = closePDFModal;
 
-// Download paper with ad wall
+// Download paper directly
 function downloadPaper(url, title) {
-    // Show ad wall before download
-    if (window.adWall) {
-        window.adWall.showAdWall(() => {
-            // This callback will be executed after ad is viewed
-            executeDownload(url, title);
-        });
-    } else {
-        // Fallback if ad wall is not loaded
-        executeDownload(url, title);
-    }
-}
-
-// Execute actual download
-function executeDownload(url, title) {
     // Create a temporary anchor element to trigger download
     const link = document.createElement('a');
     link.href = url;
@@ -292,6 +337,9 @@ function showNoResults(show) {
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', () => {
+    // Track visitor on page load
+    trackVisitor();
+    
     // Add event listeners for filters
     document.getElementById('boardFilter').addEventListener('change', applyFilters);
     document.getElementById('classFilter').addEventListener('change', applyFilters);

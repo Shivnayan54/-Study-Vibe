@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Papers - StudyVibe</title>
+    <title>Search Question Papers - Find CBSE, ICSE, Bihar Board Papers | StudyVibe</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Search question papers by keywords, board, class, subject. Find CBSE, ICSE, Bihar Board, UP Board exam papers instantly. Free download previous year question papers and PYQS.">
+    <meta name="keywords" content="search question papers, find exam papers, cbse papers search, icse question papers search, bihar board papers search, up board papers search, question papers by subject, exam papers by class, previous year papers search, pyqs search, sample papers search, board exam papers finder">
+    <meta name="author" content="StudyVibe">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Search Question Papers - Find CBSE, ICSE, Bihar Board Papers">
+    <meta property="og:description" content="Search question papers by keywords, board, class, subject. Find exam papers instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studyvibe.com/search.html">
+    <meta property="og:image" content="https://studyvibe.com/favicon.svg">
+    <meta property="og:site_name" content="StudyVibe">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://studyvibe.com/search.html">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
-    <!-- AdsTerra -->
-    <script type="text/javascript">
-	atOptions = {
-		'key' : 'cf7a486e1fb9fab95265067611c330ab',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/cf7a486e1fb9fab95265067611c330ab/invoke.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/adwall.css">
-    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/navbar-enhancements.css">
+    <script type='text/javascript' src='//pl27842973.effectivegatecpm.com/8c/8b/2f/8c8b2f17671bfdbad8210bf3a30530f0.js'></script>
 </head>
 <body>
     <nav class="navbar">
@@ -58,7 +64,6 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="browse.html">Browse Papers</a></li>
-                <li><a href="pyqs.html">PYQS</a></li>
                 <li><a href="search.html" class="active">Search</a></li>
                 <li><a href="admin-login.html" class="admin-link">Admin</a></li>
             </ul>
@@ -72,20 +77,6 @@
             <p class="page-hero-subtitle">Find any paper in seconds with our powerful search engine</p>
         </div>
     </header>
-
-    <!-- AdsTerra Banner Ad -->
-    <div style="text-align: center; margin: 20px auto; max-width: 728px;">
-        <script type="text/javascript">
-	atOptions = {
-		'key' : 'cf7a486e1fb9fab95265067611c330ab',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="//www.highperformanceformat.com/cf7a486e1fb9fab95265067611c330ab/invoke.js"></scr' + 'ipt>');
-</script>
-    </div>
 
     <main class="main-content search-page">
         <div class="search-container-modern fade-in">
@@ -160,45 +151,6 @@
         <p>&copy; 2024 Question Paper Portal. All rights reserved.</p>
     </footer>
 
-    <!-- Ad Wall Modal -->
-    <div id="adWallOverlay" class="ad-wall-overlay"></div>
-    <div id="adWallModal" class="ad-wall-modal">
-        <div class="ad-wall-header">
-            <h2>
-                <span>📥</span>
-                <span>Download Question Paper</span>
-            </h2>
-            <p>Please view the advertisement to support us and continue your download</p>
-        </div>
-
-        <div class="ad-countdown-section">
-            <p id="adWaitMessage" class="ad-wait-message">Your download will be ready in</p>
-            <div class="ad-countdown-timer">
-                <span id="adCountdown">8</span>
-                <span>seconds</span>
-            </div>
-            <p id="adReadyMessage" class="ad-ready-message">✅ Your download is ready!</p>
-        </div>
-
-        <div id="adContainer" class="ad-container">
-            <!-- Advertisement will be loaded here -->
-        </div>
-
-        <div class="ad-wall-actions">
-            <button id="adDownloadButton" class="ad-action-btn ad-download-btn disabled" onclick="proceedWithDownload()" disabled>
-                ⏳ Wait 8s
-            </button>
-            <button class="ad-action-btn ad-cancel-btn" onclick="cancelAdWall()">
-                ✕ Cancel
-            </button>
-        </div>
-
-        <div class="ad-info-box">
-            <p><strong>💡 Why ads?</strong></p>
-            <p>Advertisements help us keep this service free for everyone. Thank you for your support!</p>
-        </div>
-    </div>
-
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -211,14 +163,24 @@
     <!-- Theme Switcher -->
     <script src="js/theme.js"></script>
 
-    <!-- Ad Wall System -->
-    <script src="js/adwall.js"></script>
-
     <!-- App Script -->
     <script src="js/search.js"></script>
-    
-    <!-- Chatbot -->
-    <script src="js/chatbot.js"></script>
+
+    <!-- Bottom Navbar Ad (320x50) -->
+    <div id="bottom-adbar" style="position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: 9999; display: flex; justify-content: center; align-items: center; pointer-events: auto;">
+        <div style="width: 320px; height: 50px; overflow: hidden;">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '45642c16016e5f932b39650479ac4f69',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/45642c16016e5f932b39650479ac4f69/invoke.js"></script>
+        </div>
+    </div>
 </body>
 </html>
 

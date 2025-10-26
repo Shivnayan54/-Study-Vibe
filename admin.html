@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - StudyVibe</title>
+    <title>Admin Dashboard - Question Papers Management | StudyVibe</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Admin dashboard for managing question papers and PYQS uploads. Upload CBSE, ICSE, Bihar Board, UP Board exam papers. Manage educational content.">
+    <meta name="keywords" content="admin dashboard, question papers management, upload exam papers, cbse papers upload, icse papers admin, bihar board papers management, up board papers upload, educational content management, exam papers admin">
+    <meta name="author" content="StudyVibe">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://studyvibe.com/admin.html">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -11,6 +20,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/admin-enhancements.css">
+    <script type='text/javascript' src='//pl27842973.effectivegatecpm.com/8c/8b/2f/8c8b2f17671bfdbad8210bf3a30530f0.js'></script>
 </head>
 <body>
     <nav class="navbar">
@@ -44,7 +55,6 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="browse.html">Browse Papers</a></li>
-                <li><a href="pyqs.html">PYQS</a></li>
                 <li><a href="search.html">Search</a></li>
                 <li><a href="admin.html" class="admin-link active">Dashboard</a></li>
                 <li><a href="#" id="logoutBtn" class="logout-btn">Logout</a></li>
@@ -56,6 +66,10 @@
         <div class="admin-header">
             <h1>Admin Dashboard</h1>
             <p>Manage question papers and view statistics</p>
+            <div class="admin-user-info">
+                <span class="user-label">Logged in as:</span>
+                <span class="user-email" id="userEmail">Loading...</span>
+            </div>
         </div>
 
         <div class="admin-stats">
@@ -78,6 +92,13 @@
                 <div class="stat-info">
                     <span class="stat-number" id="recentUploads">0</span>
                     <span class="stat-label">This Month</span>
+                </div>
+            </div>
+            <div class="stat-card stat-card-visitors">
+                <div class="stat-icon">👁️</div>
+                <div class="stat-info">
+                    <span class="stat-number" id="totalVisitors">0</span>
+                    <span class="stat-label">Total Visitors</span>
                 </div>
             </div>
         </div>
@@ -452,6 +473,22 @@
 
     <!-- App Script -->
     <script src="js/admin.js"></script>
+
+    <!-- Bottom Navbar Ad (320x50) -->
+    <div id="bottom-adbar" style="position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: 9999; display: flex; justify-content: center; align-items: center; pointer-events: auto;">
+        <div style="width: 320px; height: 50px; overflow: hidden;">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '45642c16016e5f932b39650479ac4f69',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/45642c16016e5f932b39650479ac4f69/invoke.js"></script>
+        </div>
+    </div>
 </body>
 </html>
 

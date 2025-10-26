@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Papers - StudyVibe</title>
+    <title>Browse Question Papers - CBSE, ICSE, Bihar Board, UP Board | StudyVibe</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Browse and download question papers from CBSE, ICSE, Bihar Board, UP Board. Find exam papers by board, class, subject. Free download previous year question papers and sample papers.">
+    <meta name="keywords" content="browse question papers, cbse question papers browse, icse exam papers, bihar board question papers, up board papers, question papers by board, exam papers by class, sample papers download, previous year papers browse, board wise question papers, class wise exam papers, subject wise question papers">
+    <meta name="author" content="StudyVibe">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Browse Question Papers - CBSE, ICSE, Bihar Board, UP Board">
+    <meta property="og:description" content="Browse and download question papers from CBSE, ICSE, Bihar Board, UP Board. Free download exam papers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studyvibe.com/browse.html">
+    <meta property="og:image" content="https://studyvibe.com/favicon.svg">
+    <meta property="og:site_name" content="StudyVibe">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://studyvibe.com/browse.html">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
-    <!-- AdsTerra -->
-    <script type="text/javascript">
-	atOptions = {
-		'key' : 'cf7a486e1fb9fab95265067611c330ab',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/cf7a486e1fb9fab95265067611c330ab/invoke.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/adwall.css">
-    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/navbar-enhancements.css">
+    <script type='text/javascript' src='//pl27842973.effectivegatecpm.com/8c/8b/2f/8c8b2f17671bfdbad8210bf3a30530f0.js'></script>
 </head>
 <body>
     <nav class="navbar">
@@ -58,7 +64,6 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="browse.html" class="active">Browse Papers</a></li>
-                <li><a href="pyqs.html">PYQS</a></li>
                 <li><a href="search.html">Search</a></li>
                 <li><a href="admin-login.html" class="admin-link">Admin</a></li>
             </ul>
@@ -73,20 +78,6 @@
         </div>
     </header>
 
-    <!-- AdsTerra Banner Ad -->
-    <div style="text-align: center; margin: 20px auto; max-width: 728px;">
-        <script type="text/javascript">
-	atOptions = {
-		'key' : 'cf7a486e1fb9fab95265067611c330ab',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="//www.highperformanceformat.com/cf7a486e1fb9fab95265067611c330ab/invoke.js"></scr' + 'ipt>');
-</script>
-    </div>
-
     <main class="main-content browse-page">
         <div class="filters-section-modern fade-in">
             <div class="filters-header">
@@ -98,10 +89,6 @@
                     <label for="boardFilter">📋 Board</label>
                     <select id="boardFilter" class="filter-select">
                         <option value="">All Boards</option>
-                        <option value="CBSE">CBSE</option>
-                        <option value="ICSE">ICSE</option>
-                        <option value="UP Board">UP Board</option>
-                        <option value="Bihar Board">Bihar Board</option>
                     </select>
                 </div>
 
@@ -109,10 +96,6 @@
                     <label for="classFilter">🎓 Class</label>
                     <select id="classFilter" class="filter-select">
                         <option value="">All Classes</option>
-                        <option value="9">Class 9</option>
-                        <option value="10">Class 10</option>
-                        <option value="11">Class 11</option>
-                        <option value="12">Class 12</option>
                     </select>
                 </div>
 
@@ -201,45 +184,6 @@
         </div>
     </div>
 
-    <!-- Ad Wall Modal -->
-    <div id="adWallOverlay" class="ad-wall-overlay"></div>
-    <div id="adWallModal" class="ad-wall-modal">
-        <div class="ad-wall-header">
-            <h2>
-                <span>📥</span>
-                <span>Download Question Paper</span>
-            </h2>
-            <p>Please view the advertisement to support us and continue your download</p>
-        </div>
-
-        <div class="ad-countdown-section">
-            <p id="adWaitMessage" class="ad-wait-message">Your download will be ready in</p>
-            <div class="ad-countdown-timer">
-                <span id="adCountdown">8</span>
-                <span>seconds</span>
-            </div>
-            <p id="adReadyMessage" class="ad-ready-message">✅ Your download is ready!</p>
-        </div>
-
-        <div id="adContainer" class="ad-container">
-            <!-- Advertisement will be loaded here -->
-        </div>
-
-        <div class="ad-wall-actions">
-            <button id="adDownloadButton" class="ad-action-btn ad-download-btn disabled" onclick="proceedWithDownload()" disabled>
-                ⏳ Wait 8s
-            </button>
-            <button class="ad-action-btn ad-cancel-btn" onclick="cancelAdWall()">
-                ✕ Cancel
-            </button>
-        </div>
-
-        <div class="ad-info-box">
-            <p><strong>💡 Why ads?</strong></p>
-            <p>Advertisements help us keep this service free for everyone. Thank you for your support!</p>
-        </div>
-    </div>
-
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -252,14 +196,24 @@
     <!-- Theme Switcher -->
     <script src="js/theme.js"></script>
 
-    <!-- Ad Wall System -->
-    <script src="js/adwall.js"></script>
-
     <!-- App Script -->
     <script src="js/browse.js"></script>
-    
-    <!-- Chatbot -->
-    <script src="js/chatbot.js"></script>
+
+    <!-- Bottom Navbar Ad (320x50) -->
+    <div id="bottom-adbar" style="position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: 9999; display: flex; justify-content: center; align-items: center; pointer-events: auto;">
+        <div style="width: 320px; height: 50px; overflow: hidden;">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '45642c16016e5f932b39650479ac4f69',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/45642c16016e5f932b39650479ac4f69/invoke.js"></script>
+        </div>
+    </div>
 </body>
 </html>
 

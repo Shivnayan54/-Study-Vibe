@@ -1,0 +1,67 @@
+/* SEO Content Section */
+.seo-content-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    margin-top: 2rem;
+}
+
+.seo-content-section .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.seo-content-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.seo-content-section h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 2rem 0 1rem 0;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+.seo-content-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.seo-content-section ul, .seo-content-section ol {
+    margin: 1rem 0 1.5rem 2rem;
+}
+
+.seo-content-section li {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.seo-content-section strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .seo-content-section h2 {
+        font-size: 2rem;
+    }
+    
+    .seo-content-section h3 {
+        font-size: 1.5rem;
+    }
+    
+    .seo-content-section .container {
+        padding: 0 1rem;
+    }
+}
